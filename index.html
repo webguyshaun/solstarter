@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no"><!-- font awesome 5 free -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"><!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"><!-- Poppins font from Google -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;400;600;900&amp;display=swap" rel="stylesheet"><!-- Your Custom CSS file that will include your blocks CSS -->
+  <link rel="stylesheet" href="./style.css">
+  <title>NFTYSIG | Digital Signatures for NFTs</title>
+  <meta property="og:image" content="https://media.giphy.com/media/wizL7smKikV8qr3ySN/giphy.gif" />
+  <!-- favicon CSS -->
+  <link rel="icon" type="image/png" sizes="32x32" href="logo.svg">
+</head>
+
+<body>
+
+  <!------------------------------>
+  <!--Section Name---------------->
+  <!------------------------------>
+  <header class="hero container-fluid position-relative overflow-hidden">
+    <div class="hero__content container">
+      <!-- I'm putting the nav inside this "fixed-nav-container" to fix some issues happens on scroll -->
+      <div class="fixed-nav-container">
+        <nav class="hero-nav position-relative container mx-auto px-0">
+          <ul class="nav w-100 list-unstyled align-items-center p-0">
+            <li class="hero-nav__item"><a href="/"><img class="hero-nav__logo" src="new-white.svg" change-src-onscroll="new-white.svg" alt="our logo"></a><!-- Don't remove this empty span --><span class="mx-2"></span></li>
+            <li id="hero-menu" class="flex-grow-1 hero__nav-list hero__nav-list--mobile-menu ft-menu">
+              <ul class="hero__menu-content nav flex-column flex-lg-row ft-menu__slider animated list-unstyled p-2 p-lg-0">
+                <li class="flex-grow-1">
+                  <ul class="nav nav--lg-side flex-column-reverse flex-lg-row-reverse list-unstyled align-items-center p-0">
+                    <li class="hero-nav__item"><a href="" target="_blank" class="btn btn-primary">Connect Wallet</a></li>
+                    <li class="hero-nav__item"><a href="#!" class="hero-nav__link">Docs</a></li>
+                    <li class="hero-nav__item"><a href="#!" class="hero-nav__link">About</a></li>
+
+
+                  </ul>
+                </li>
+              </ul><button close-nav-menu="" class="ft-menu__close-btn animated"><svg class="bi bi-x" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"></path>
+                  <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"></path>
+                </svg></button>
+            </li>
+            <li class="hero-nav__item d-lg-none d-flex flex-row-reverse"><button open-nav-menu="" class="text-center px-2"><i class="fas fa-bars"></i></button></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="hero__body text-center col-lg-8 px-0 mx-auto">
+        <h1 class="hero__title mb-3">Fair and accessible capital for <span class="highlight">everyone</span>.</h1>
+        <p class="hero__paragraph mb-5">Solstarter is the first IDO platform for the Solana Ecosystem that empowers projects to raise liquidity in a fair &amp; decentralized manner.</p>
+        <div class="hero__btns-container"><a class="hero__btn btn btn-primary mb-2 mb-lg-0 mx-1 mx-lg-2" href="#!">View Pools</a>
+          <!-- <a class="hero__btn btn btn-secondary mb-2 mb-lg-0 mx-1 mx-lg-2" href="#!">
+              Start your 14-days free
+            </a> -->
+        </div>
+      </div>
+    </div>
+    <div class="hero__video-container">
+      <!-- Video By https://pixabay.com --><video id="my-video" class="video-js" autoplay muted loop preload="auto" width="100%" poster="https://images.unsplash.com/photo-1472071341375-1edd37e36921?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1500&amp;q=80" data-setup="{}">
+        <source src="video3.mp4" type="video/mp4">
+        <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that<a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+      </video></div>
+  </header>
+  <script src="https://unpkg.com/tua-body-scroll-lock"></script>
+  <script>
+    var showDropdown = function(e) {
+        e.currentTarget.classList.add("hero-nav__item--show-dropdown")
+      },
+      hideDropdown = function(e) {
+        e.currentTarget.classList.remove("hero-nav__item--show-dropdown")
+      },
+      toggleDropdown = function(e) {
+        e.currentTarget.classList.toggle("hero-nav__item--show-dropdown")
+      };
+
+    function setupDropdowns(n) {
+      document.querySelectorAll(".hero-nav__item--with-dropdown").forEach(function(e) {
+        var o, t;
+        n.matches ? ((o = e.classList).contains("hero-nav__item--dropdown-left") && o.contains("hero-nav__item--dropdown-right") || (t = e.getBoundingClientRect().width, e.querySelector(".dropdown").style.transform = "translateX(calc(-50% + " + t / 2 + "px))"), e.addEventListener("mouseenter", showDropdown), e.addEventListener("mouseleave", hideDropdown), e.querySelector(".hero-nav__link").removeEventListener("click", toggleDropdown)) : (e.removeEventListener("mouseenter", showDropdown), e.removeEventListener("mouseleave", hideDropdown), e.querySelector(".dropdown").style.transform = "", e.addEventListener("click", toggleDropdown))
+      })
+    }
+    var mediaQuery = window.matchMedia("(min-width: 992px)");
+    setupDropdowns(mediaQuery), mediaQuery.addListener(function(e) {
+      var o;
+      setupDropdowns(e), e.matches && ((o = document.querySelector("#hero-menu")).style.height = "", bodyScrollLock.unlock(o))
+    });
+    var heroMenu = document.querySelector("#hero-menu");
+
+    function closeMenuAndGoTo(o) {
+      document.querySelector("#hero-menu").classList.toggle("ft-menu--js-show");
+      var e = document.querySelector("#hero-menu");
+      if (e.style.height = "", bodyScrollLock.unlock(e), "#" === o || !document.querySelector(o)) return !1;
+      setTimeout(function() {
+        var e = document.querySelector(o);
+        window.scrollTo({
+          top: e.getBoundingClientRect().top,
+          behavior: "smooth"
+        })
+      }, 250)
+    }
+    document.querySelector("[close-nav-menu]").onclick = function(e) {
+      heroMenu.classList.toggle("ft-menu--js-show"), bodyScrollLock.unlock(heroMenu)
+    }, document.querySelector("[open-nav-menu]").onclick = function(e) {
+      heroMenu.classList.toggle("ft-menu--js-show"), heroMenu.style.height = window.innerHeight + "px", bodyScrollLock.lock(heroMenu)
+    }, document.querySelector("#hero-menu").querySelectorAll("[href*='#']").forEach(function(o) {
+      o.onclick = function(e) {
+        e.preventDefault(), closeMenuAndGoTo(o.getAttribute("href"))
+      }
+    });
+    var nav = document.querySelector(".hero-nav");
+    window.onscroll = function(e) {
+      var o = document.querySelector("[change-src-onscroll]");
+      window.scrollY > nav.getBoundingClientRect().height ? (nav.classList.contains("hero-nav--is-sticky") || (window.logoSrc = o.getAttribute("src"), o.setAttribute("src", o.getAttribute("change-src-onscroll")), o.setAttribute("change-src-onscroll", logoSrc)), nav.classList.add("hero-nav--is-sticky")) : 0 === window.scrollY && (nav.classList.contains("hero-nav--is-sticky") && (window.logoSrc = o.getAttribute("src"), o.setAttribute("src", o.getAttribute("change-src-onscroll")), o.setAttribute("change-src-onscroll", logoSrc)), nav.classList.remove("hero-nav--is-sticky"))
+    };
+    var languageDropdown = document.querySelector("[javascript-language-selector]");
+    languageDropdown.onclick = function(e) {
+      e.target.classList.contains("dropdown__link") && (languageDropdown.querySelector(".dropdown__link--selected").classList.remove("dropdown__link--selected"), e.target.classList.add("dropdown__link--selected"), document.querySelector(".language-image").setAttribute("src", e.target.querySelector("img").getAttribute("src")))
+    }
+  </script>
+  <div class="block-24 space-between-blocks">
+    <div class="block__header col-lg-8 col-xl-7 mx-auto text-center">
+      <h1 class="block__title">Our Partners</h1>
+    </div>
+    <div class="block-24__logos"><img class="block-24__img" src="solana.png"> <img class="block-24__img" src="linkpad.svg"></div>
+  </div>
+  <!------------------------------>
+  <!--FEATURES ---------------->
+  <!------------------------------>
+  <div class="block-25 space-between-blocks">
+    <div class="container">
+      <div class="row px-2 align-items-center">
+        <div class="block__header col-lg-6">
+          <h1 class="block__title pr-5 mb-3">Built on a <span class="highlight">Burgeoning</span> Ecosystem.</h1>
+          <p class="block__paragraph pr-5">The Solana network is one of the fastest growing blockchains with over five large cap projects being developed over the last year. Solstarter aims to continue the adoption of this ecosytem by driving the incubation and funding of future innovative projects built on Solana.</p>
+        </div>
+        <div class="col-lg-6 logos">
+          <div class="row">
+            <div class="col-6 px-0">
+              <div class="logos__img-container"><img class="logos__img" src="solana.png"></div>
+            </div>
+            <div class="col-6 px-0">
+              <div class="logos__img-container"><img class="logos__img" src="serum.svg"></div>
+            </div>
+            <div class="col-6 px-0">
+              <div class="logos__img-container"><img class="logos__img" src="maps.png"></div>
+            </div>
+            <div class="col-6 px-0">
+              <div class="logos__img-container"><img class="logos__img" src="raydium.svg"></div>
+            </div>
+            <div class="col-6 px-0">
+              <div class="logos__img-container"><img class="logos__img" src="oxygen.svg"></div>
+            </div>
+            <div class="col-6 px-0">
+              <div class="logos__img-container"><img class="logos__img" src="mango.png"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="block-8-scr space-between-blocks">
+    <div class="container position-relative">
+      <div class="row px-2 align-items-center flex-column-reverse flex-lg-row">
+        <!-- CONTENT -->
+        <div class="col-lg-6 position-relative mt-4 mt-lg-0">
+          <h1 class="block__title mb-3"><span class="purple">Fair</span> Distribution</h1>
+          <p class="block__paragraph block__paragraph--big mb-0">IDO projects on Solstarter don't have any backdoor raises for VC's and underground connections. Allocations are 100% fair and given out based on the quantity of SOLS a user stakes - it's that simple.</p>
+        </div><!-- IMAGE -->
+        <div class="col-lg-6 my-5 my-lg-0 p-lg-5 text-center">
+          <div class="block-8-scr__img-container position-relative"><img class="block-8-scr__img w-100" src="rice.jpeg"><svg class="block-8-scr-scr-dots-svg">
+              <defs>
+                <pattern id="pattern" width="19" height="19" viewBox="0 0 40 40" patternUnits="userSpaceOnUse" patternTransform="rotate(90)">
+                  <rect id="pattern-background" x="0" y="0" width="400%" height="400%" fill="transparent"></rect>
+                  <circle cx="20" cy="20" r="4" fill="currentColor" stroke="currentColor" stroke-width="0"></circle>
+                  <circle cx="20" cy="20" r="0" fill="currentColor" stroke="currentColor" stroke-width="0"></circle>
+                </pattern>
+              </defs>
+              <rect fill="url(#pattern)" height="100%" width="100%" y="0" x="0"></rect>
+            </svg></div>
+        </div>
+      </div>
+    </div>
+  </div><!-- LEFT FEATURE -->
+  <!------------------------------>
+  <!--Section Name---------------->
+  <!------------------------------>
+  <div class="block-8-scr space-between-blocks">
+    <div class="container position-relative">
+      <div class="row px-2 align-items-center flex-column-reverse flex-lg-row">
+        <!-- IMAGE -->
+        <div class="col-lg-6 my-5 my-lg-0 p-lg-5 text-center">
+          <div class="block-8-scr__img-container position-relative"><img class="block-8-scr__img w-100" src="allocation.jpeg"><svg class="block-8-scr-scr-dots-svg">
+              <defs>
+                <pattern id="pattern" width="19" height="19" viewBox="0 0 40 40" patternUnits="userSpaceOnUse" patternTransform="rotate(90)">
+                  <rect id="pattern-background" x="0" y="0" width="400%" height="400%" fill="transparent"></rect>
+                  <circle cx="20" cy="20" r="4" fill="currentColor" stroke="currentColor" stroke-width="0"></circle>
+                  <circle cx="20" cy="20" r="0" fill="currentColor" stroke="currentColor" stroke-width="0"></circle>
+                </pattern>
+              </defs>
+              <rect fill="url(#pattern)" height="100%" width="100%" y="0" x="0"></rect>
+            </svg></div>
+        </div><!-- CONTENT -->
+        <div class="col-lg-6 position-relative mt-4 mt-lg-0">
+          <h1 class="block__title mb-3"><span class="highlight">Guaranteed</span> Allocations</h1>
+          <p class="block__paragraph block__paragraph--big mb-0">Gone are the games of who can click a button first or which bot can snipe the pool the quickest. Allocations will be given to anyone & everyone based on our two tiered auction system.</p>
+        </div>
+      </div>
+    </div>
+  </div><!-- RIGHT FEATURE -->
+  <!------------------------------>
+  <!--Section Name---------------->
+  <!------------------------------>
+  <div class="block-8-scr space-between-blocks">
+    <div class="container position-relative">
+      <div class="row px-2 align-items-center flex-column-reverse flex-lg-row">
+        <!-- CONTENT -->
+        <div class="col-lg-6 position-relative mt-4 mt-lg-0">
+          <h1 class="block__title mb-3">Fully <span class="purple">Decentralized</span></h1>
+          <p class="block__paragraph block__paragraph--big mb-0">Solstarter is governed by a DAO to determine the future of Solstarter and the pricing of tiers for pools. We have big aspirations for the future and the community is invited to help us democratize fundraising.</p>
+        </div><!-- IMAGE -->
+        <div class="col-lg-6 my-5 my-lg-0 p-lg-5 text-center">
+          <div class="block-8-scr__img-container position-relative"><img class="block-8-scr__img w-100" src="web.jpeg"><svg class="block-8-scr-scr-dots-svg">
+              <defs>
+                <pattern id="pattern" width="19" height="19" viewBox="0 0 40 40" patternUnits="userSpaceOnUse" patternTransform="rotate(90)">
+                  <rect id="pattern-background" x="0" y="0" width="400%" height="400%" fill="transparent"></rect>
+                  <circle cx="20" cy="20" r="4" fill="currentColor" stroke="currentColor" stroke-width="0"></circle>
+                  <circle cx="20" cy="20" r="0" fill="currentColor" stroke="currentColor" stroke-width="0"></circle>
+                </pattern>
+              </defs>
+              <rect fill="url(#pattern)" height="100%" width="100%" y="0" x="0"></rect>
+            </svg></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="block-12 space-between-blocks">
+    <div class="block-12__shape-for-background"></div>
+    <div class="container space-between-blocks">
+      <!-- HEADER -->
+      <div class="col-lg-8 col-xl-7 mx-auto text-center mb-5">
+        <h1 class="block__title mb-3">The <span class="purple">Four Tiers </span>of <span class="highlight">Solstarter</span></h1>
+        <p class="block__paragraph pb-4">Solstarter uses a tier based system to determine the guaranteed allocation for each participant in a pool. It's a fair and simple process: the amount of SOLS tokens a holder has staked determines the pool weight of allocation for a given participant.</p>
+      </div><!-- BODY -->
+      <div class="row px-2 justify-content-center">
+        <div class="col-lg-3 mb-2-1rem">
+          <div class="block-12-card-1">
+            <div class="block-12-card-1__content">
+              <div class="block-12-card-1__icon"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cpu" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+
+                  <path class="moon" fill-rule="moon" d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278zM4.858 1.311A7.269 7.269 0 0 0 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.316 7.316 0 0 0 5.205-2.162c-.337.042-.68.063-1.029.063-4.61 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286z"/></path>
+                </svg></div>
+              <h3 class="block-12-card-1__title moon">Moon</h3>
+              <p class="block-12-card-1__paragraph moon"><span class="text2">7%</span> pool weight</p>
+              <p class="block-12-card-1__paragraph moon"><span class="text2">5000</span> staked SOLS</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 mb-2-1rem">
+          <div class="block-12-card-1">
+            <div class="block-12-card-1__content">
+              <div class="block-12-card-1__icon"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-command" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                   <path class="planet" fill-rule="planet" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm7.5-6.923c-.67.204-1.335.82-1.887 1.855A7.97 7.97 0 0 0 5.145 4H7.5V1.077zM4.09 4a9.267 9.267 0 0 1 .64-1.539 6.7 6.7 0 0 1 .597-.933A7.025 7.025 0 0 0 2.255 4H4.09zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a6.958 6.958 0 0 0-.656 2.5h2.49zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5H4.847zM8.5 5v2.5h2.99a12.495 12.495 0 0 0-.337-2.5H8.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5H4.51zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5H8.5zM5.145 12c.138.386.295.744.468 1.068.552 1.035 1.218 1.65 1.887 1.855V12H5.145zm.182 2.472a6.696 6.696 0 0 1-.597-.933A9.268 9.268 0 0 1 4.09 12H2.255a7.024 7.024 0 0 0 3.072 2.472zM3.82 11a13.652 13.652 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5H3.82zm6.853 3.472A7.024 7.024 0 0 0 13.745 12H11.91a9.27 9.27 0 0 1-.64 1.539 6.688 6.688 0 0 1-.597.933zM8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855.173-.324.33-.682.468-1.068H8.5zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.65 13.65 0 0 1-.312 2.5zm2.802-3.5a6.959 6.959 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5h2.49zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7.024 7.024 0 0 0-3.072-2.472c.218.284.418.598.597.933zM10.855 4a7.966 7.966 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4h2.355z"/></path>
+                </svg></div>
+              <h3 class="block-12-card-1__title planet">Planet</h3>
+              <p class="block-12-card-1__paragraph planet"><span class="text2">15%</span> pool weight</p>
+              <p class="block-12-card-1__paragraph planet"><span class="text2">9000</span> staked SOLS</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 mb-2-1rem">
+          <div class="block-12-card-1">
+            <div class="block-12-card-1__content">
+              <div class="block-12-card-1__icon"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-briefcase" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+
+                  <path class="redgiant" fill-rule="redgiant" d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/></path>
+                </svg></div>
+              <h3 class="block-12-card-1__title redgiant">Red Giant</h3>
+              <p class="block-12-card-1__paragraph redgiant"><span class="text2">28%</span> pool weight</p>
+              <p class="block-12-card-1__paragraph redgiant"><span class="text2">16000</span> staked SOLS</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 mb-2-1rem">
+          <div class="block-12-card-1">
+            <div class="block-12-card-1__content">
+              <div class="block-12-card-1__icon"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-briefcase" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+
+                  <path class="supernova" fill-rule="supernova" d="M7.657 6.247c.11-.33.576-.33.686 0l.645 1.937a2.89 2.89 0 0 0 1.829 1.828l1.936.645c.33.11.33.576 0 .686l-1.937.645a2.89 2.89 0 0 0-1.828 1.829l-.645 1.936a.361.361 0 0 1-.686 0l-.645-1.937a2.89 2.89 0 0 0-1.828-1.828l-1.937-.645a.361.361 0 0 1 0-.686l1.937-.645a2.89 2.89 0 0 0 1.828-1.828l.645-1.937zM3.794 1.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387A1.734 1.734 0 0 0 4.593 5.69l-.387 1.162a.217.217 0 0 1-.412 0L3.407 5.69A1.734 1.734 0 0 0 2.31 4.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387A1.734 1.734 0 0 0 3.407 2.31l.387-1.162zM10.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732L9.1 2.137a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L10.863.1z"/></path>
+                </svg></div>
+              <h3 class="block-12-card-1__title supernova">Supernova</h3>
+              <p class="block-12-card-1__paragraph supernova"><span class="text2">50%</span> pool weight</p>
+              <p class="block-12-card-1__paragraph supernova"><span class="text2">25000</span> staked SOLS</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!------------------------------>
+  <!-- RIGHT FEATURE ---------------->
+  <!------------------------------>
+
+  <!------------------------------>
+  <!-- FEATURE CENTER ---------------->
+  <!------------------------------>
+
+  <!------------------------------>
+  <!-- INTEGRATIONS ---------------->
+  <!------------------------------>
+
+  <!------------------------------>
+  <!-- CTA + TESTIMONIAL ---------------->
+  <!------------------------------>
+  <div class="block-18 px-3">
+    <div class="container">
+      <div class="block-18__card row">
+        <div class="text-center col-lg-6 d-flex align-items-center justify-content-center">
+          <img class="block-8-scr__img w-100" src="ui.png">
+
+        </div>
+        <div class="cta-card col-lg-6">
+          <h1 class="cta-card__title mb-3">Back the future of DeFi - <span class="highlight">today</span>.</h1>
+          <div class="mt-5"><a href="#!" class="btn btn-primary"><span class="mx-1">View Pools</span><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"></path>
+              </svg></a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!------------------------------>
+  <!-- FOOTER ---------------->
+  <!------------------------------>
+  <div class="block-44 py-5">
+    <div class="container">
+      <div class="row px-0 mx-0 justify-content-center align-items-center">
+        <div class="block-44__logo-container"><img class="block-44__logo" src="new-white.svg"></div>
+        <ul class="block-44__list list-unstyled justify-content-center mb-0">
+          <li class="block-44__li-1"><a href="#!" class="block-44__link">Twitter</a></li>
+          <li class="block-44__li-1"><a href="#!" class="block-44__link">About</a></li>
+          <li class="block-44__li-1"><a href="#!" class="block-44__link">Docs</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr class="block-44__divider">
+    <div class="container">
+      <div class="row flex-column flex-md-row px-2 justify-content-center">
+        <div class="flex-grow-1">
+          <ul class="block-44__extra-links d-flex list-unstyled p-0">
+            <li class="mx-2"><a href="#!" class="block-44__link m-0"><i class="fab fa-twitter"></i></a></li>
+            <li class="mx-2"><a href="#!" class="block-44__link m-0"><i class="fab fa-telegram"></i></a></li>
+            <li class="mx-2"><a href="#!" class="block-44__link m-0"><i class="fab fa-medium"></i></a></li>
+          </ul>
+        </div>
+        <p class="block-44__copyrights">© 2020 Solstarter. All Rights Reserved.</p>
+        <div><h2 class="h3-font mb-2 paddtop block-44__copyrights">Legal Disclaimer</h2>
+                <p class="block-44__copyrights">The information provided on this website does not constitute investment advice, financial advice, trading advice, or any other sort of advice and you should not treat any of the website's content as such. The NSIG team does not recommend that any cryptocurrency should be bought, sold, or held by you. Do conduct your own due diligence. By purchasing NSIG , you agree that you are not purchasing a security or investment and you agree to hold the team harmless and not liable for any losses or taxes you may incur. You also agree that the team is presenting the token "as is" and is not legally required to provide any support or services. You should have no expectation of any form from NSIG and its team. Always make sure that you are in compliance with your local laws and regulations before you make any purchase.</p><div>
+
+    </div>
+
+  </div><!-- Put the blocks HTML here -->
+      </div>
+    </div>
+  </div><!-- Put the blocks HTML here -->
+</body>
+
+</html>
