@@ -28,12 +28,13 @@
       <div class="fixed-nav-container">
         <nav class="hero-nav position-relative container mx-auto px-0">
           <ul class="nav w-100 list-unstyled align-items-center p-0">
-            <li class="hero-nav__item"><a href="/"><img class="hero-nav__logo" src="solstarter-logo-curves.svg" change-src-onscroll="solstarter-logo-curves.svg" alt="our logo"></a><!-- Don't remove this empty span --><span class="mx-2"></span></li>
+            <li class="hero-nav__item"><a href="index.html"><img class="hero-nav__logo" src="solstarter-logo-curves.svg" change-src-onscroll="solstarter-logo-curves.svg" alt="our logo"></a><!-- Don't remove this empty span --><span class="mx-2"></span></li>
             <li id="hero-menu" class="flex-grow-1 hero__nav-list hero__nav-list--mobile-menu ft-menu">
               <ul class="hero__menu-content nav flex-column flex-lg-row ft-menu__slider animated list-unstyled p-2 p-lg-0">
                 <li class="flex-grow-1">
                   <ul class="nav nav--lg-side flex-column-reverse flex-lg-row-reverse list-unstyled align-items-center p-0">
                     <li class="hero-nav__item"><a href="" target="_blank" class="btn btn-primary">Connect Wallet</a></li>
+                    <li class="hero-nav__item"><a href="governance.html" class="hero-nav__link">Apply</a></li>
                     <li class="hero-nav__item"><a href="#!" class="hero-nav__link">Docs</a></li>
                     <li class="hero-nav__item"><a href="#!" class="hero-nav__link">About</a></li>
 
@@ -64,6 +65,12 @@
         <source src="video3.mp4" type="video/mp4">
         <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that<a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
       </video></div>
+      <div class="block-24 space-between-blocks">
+        <div class="block__header col-lg-8 col-xl-7 mx-auto text-center">
+          <h1 class="block__title">Our Partners</h1>
+        </div>
+        <div class="block-24__logos"><img class="block-24__img" src="solana.png"> <img class="block-24__img" src="linkpad.svg"></div>
+      </div>
   </header>
   <script src="https://unpkg.com/tua-body-scroll-lock"></script>
   <script>
@@ -121,12 +128,7 @@
       e.target.classList.contains("dropdown__link") && (languageDropdown.querySelector(".dropdown__link--selected").classList.remove("dropdown__link--selected"), e.target.classList.add("dropdown__link--selected"), document.querySelector(".language-image").setAttribute("src", e.target.querySelector("img").getAttribute("src")))
     }
   </script>
-  <div class="block-24 space-between-blocks">
-    <div class="block__header col-lg-8 col-xl-7 mx-auto text-center">
-      <h1 class="block__title">Our Partners</h1>
-    </div>
-    <div class="block-24__logos"><img class="block-24__img" src="solana.png"> <img class="block-24__img" src="linkpad.svg"></div>
-  </div>
+  
   <!------------------------------>
   <!--FEATURES ---------------->
   <!------------------------------>
@@ -135,7 +137,7 @@
       <div class="row px-2 align-items-center">
         <div class="block__header col-lg-6">
           <h1 class="block__title pr-5 mb-3">Built on a <span class="highlight">Burgeoning</span> Ecosystem.</h1>
-          <p class="block__paragraph pr-5">The Solana network is one of the fastest growing blockchains with multiple large cap projects being developed over the last year. Solstarter aims to continue the adoption of this ecosytem by driving the incubation and funding of future innovative projects built on Solana.</p>
+          <p class="block__paragraph pr-5">The Solana network is one of the fastest growing blockchains with multiple large cap projects being developed over the last year. Solstarter aims to continue the adoption of this ecosystem by driving the incubation and funding of future innovative projects built on Solana.</p>
         </div>
         <div class="col-lg-6 logos">
           <div class="row">
