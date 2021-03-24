@@ -789,6 +789,12 @@ body {
   }
 }
 
+@media(max-width:992px) {
+  .hero__video-container {
+    transform: scale(3);
+  }
+}
+
 :root {
   --primary: #543fd6;
   --secondary: #000;
