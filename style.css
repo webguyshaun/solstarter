@@ -2225,12 +2225,12 @@ button:focus {
 
 .card-2 {
   padding: 1.5rem;
-  margin-bottom: 1rem;
-  border-radius: 5px;
+  margin-bottom: 2rem;
+  border-radius:15px;
   border: 2px solid #8564ED;
   background-image: url("bg-nova.png");
   background-size: cover;
-  box-shadow: 0 0 30px 0 #8564ED;
+  box-shadow: 0 -35px 110px -30px #8564ED;
 }
 
 @media(min-width:992px) {
@@ -2263,12 +2263,12 @@ button:focus {
 
 .card-3 {
   padding: 1.5rem;
-  margin-bottom: 1rem;
-  border-radius: 5px;
+  margin-bottom: 2rem;
+  border-radius:15px;
   border: 2px solid #FF6E00;
   background-image: url("bg-giant.png");
   background-size: cover;
-  box-shadow: 0 0 30px 0 #FF6E00;
+  box-shadow: 0 -35px 110px -30px #FF6E00;
 }
 
 @media(min-width:992px) {
@@ -2303,12 +2303,12 @@ button:focus {
 
 .card-4 {
   padding: 1.5rem;
-  margin-bottom: 1rem;
-  border-radius: 5px;
+  margin-bottom: 2rem;
+  border-radius:15px;
   border: 2px solid #00BAFF;
   background-image: url("bg-planet.png");
   background-size: cover;
-  box-shadow: 0 0 30px 0 #00BAFF;
+  box-shadow: 0 -35px 110px -30px #00BAFF;
 }
 
 @media(min-width:992px) {
@@ -2344,12 +2344,12 @@ button:focus {
 
 .card-5 {
   padding: 1.5rem;
-  margin-bottom: 1rem;
-  border-radius: 5px;
+  margin-bottom: 2rem; 
+  border-radius:15px;
   border: 2px solid #F1E6C9;
   background-image: url("bg-moon.png");
   background-size: cover;
-  box-shadow: 0 0 30px 0 #F1E6C9;
+  box-shadow: 0 -35px 110px -30px #F1E6C9;
 }
 
 @media(min-width:992px) {
