@@ -16,6 +16,8 @@
   --space-between-blocks: 5.3rem;
   /* for mobiles */
   --space-between-blocks-small-screens: 3rem;
+
+
 }
 
 body {
@@ -1211,8 +1213,8 @@ button:focus {
 }
 
 .hero-nav--is-sticky {
-  color: var(--dropdown-text-color);
-  background: var(--dropdown-background);
+  color: #000;
+  background: #000;
   position: fixed !important;
   left: 0;
   right: 0;
